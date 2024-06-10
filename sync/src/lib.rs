@@ -35,7 +35,7 @@ use deadpool_runtime::{Runtime, SpawnBlockingError};
 #[derive(Debug)]
 pub enum InteractError {
     /// Provided callback has panicked.
-    Panic(Box<dyn Any + Send + 'static>),
+    Panic(Box<dyn Any + Send + Sync + 'static>),
 
     /// Callback was aborted. This variant needs to exist for technical
     /// reasons but you should never actually be able to get this as a
