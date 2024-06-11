@@ -113,7 +113,7 @@ where
     pub async fn interact<F, R>(&self, f: F) -> Result<R, InteractError>
     where
         F: FnOnce(&mut T) -> R + Send + Sync + 'static,
-        R: Send + 'static,
+        R: Send + Sync + 'static,
     {
         let arc = self.obj.clone();
         #[cfg(feature = "tracing")]
