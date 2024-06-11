@@ -112,7 +112,7 @@ where
     /// is not blocked.
     pub async fn interact<F, R>(&self, f: F) -> Result<R, InteractError>
     where
-        F: FnOnce(&mut T) -> R + Send + 'static,
+        F: FnOnce(&mut T) -> R + Send + Sync + 'static,
         R: Send + 'static,
     {
         let arc = self.obj.clone();
